@@ -112,7 +112,7 @@ function App() {
     doc.save("peer-review.pdf");
   };
 
-  const getRubricForOption = (option: number) => {
+  const getRubricForOption = () => {
     return `You are a peer reviewer for a paper. The review should answer these questions about the paper:
     - What is the main goal of the project?
     - What are the main claims?
@@ -208,7 +208,7 @@ function App() {
 
       const response = await client.responses.create({
         model: "gpt-4o",
-        instructions: getRubricForOption(selectedOption),
+        instructions: getRubricForOption(),
         input: [
           {
             role: "user",
