@@ -113,111 +113,29 @@ function App() {
   };
 
   const getRubricForOption = (option: number) => {
-    const commonRubric = `
-For all options, also evaluate:
-1. Writing Quality:
-   - Is the paper well-written and coherent?
-   - Is the story clear and logical?
-   - Is the paper self-contained?
-
-2. Technical Depth:
-   - Is there appropriate technical detail?
-   - Are the methods properly explained?
-   - Is the analysis thorough?
-
-3. Impact and Contribution:
-   - What is the significance of the findings?
-   - How does this work contribute to the field?
-   - What are the limitations and future directions?`;
-
-    switch (option) {
-      case 0:
-        return `You are a peer reviewer for a paper. Please review the paper for ${options[option].label}.
-
-Evaluate the following aspects:
-1. Problem Domain and Novelty:
-   - Is the problem clearly described in a new domain?
-   - Is there a clear justification for applying deep learning techniques?
-   - Is the domain expertise properly established?
-
-2. Technical Implementation:
-   - Are the deep learning techniques from the course appropriately applied?
-   - Is there a clear comparison with traditional non-deep-learning approaches?
-   - Are the implementation details and code structure well-documented?
-
-3. Analysis and Results:
-   - Are there clear loss curves for training and validation?
-   - Is there systematic analysis and exploration?
-   - Are the results properly compared with baselines?
-
-4. Reproducibility:
-   - Is there a complete GitHub repository with all code?
-   - Are model checkpoints provided?
-   - Is there clear documentation for replication?
-
-${commonRubric}
-
-Please provide a detailed review addressing these points, with specific examples and suggestions for improvement.`;
-
-      case 1:
-        return `You are a peer reviewer for a paper. Please review the paper for ${options[option].label}.
-
-Evaluate the following aspects:
-1. Research Question and Context:
-   - Is the investigation clearly defined and novel?
-   - Is there proper citation of relevant literature?
-   - Is the work placed in proper intellectual context?
-
-2. Methodology:
-   - Is there clear replication of existing work?
-   - Are the architectural choices or variations well-justified?
-   - Is the training/test data generation process clear?
-
-3. Analysis:
-   - Are there comprehensive loss curves?
-   - Is there systematic comparison with baselines?
-   - Are the results properly analyzed and interpreted?
-
-4. Technical Implementation:
-   - Is the code well-documented and organized?
-   - Are model checkpoints provided?
-   - Is everything reproducible?
-
-${commonRubric}
-
-Please provide a detailed review addressing these points, with specific examples and suggestions for improvement.`;
-
-      case 2:
-        return `You are a peer reviewer for a paper. Please review the paper for ${options[option].label}.
-
-Evaluate the following aspects:
-1. Research Focus:
-   - Is the interpretability question clearly defined?
-   - Is there proper citation of relevant literature?
-   - Is the work placed in proper intellectual context?
-
-2. Methodology:
-   - Are the chosen pre-trained models appropriate?
-   - Is the interpretability approach well-justified?
-   - Are the interventions or explorations clearly described?
-
-3. Analysis:
-   - Is there systematic investigation rather than just demonstration?
-   - Are the findings properly analyzed and interpreted?
-   - Is there clear evidence of mechanism understanding?
-
-4. Technical Implementation:
-   - Is the code well-documented and organized?
-   - Is everything reproducible?
-   - Are the experiments properly controlled?
-
-${commonRubric}
-
-Please provide a detailed review addressing these points, with specific examples and suggestions for improvement.`;
-
-      default:
-        return `You are a peer reviewer for a paper. Please provide a detailed review with specific examples and suggestions for improvement.`;
-    }
+    return `You are a peer reviewer for a paper. The review should answer these questions about the paper:
+    - What is the main goal of the project?
+    - What are the main claims?
+    - What are the experiments?
+    - What is the evaluation protocol?
+    - What is the data?
+    - What is the task?
+    - How do the experiments support the goal/claims of the paper?
+    - Are any of the limitations discussed in the paper?
+    - What are the strengths of the paper?
+    - What are the weaknesses of the paper?
+    - Provide a suggestion for improving the paper.
+    - What is the relevant related work?
+    - Is the paper reproducible?
+    - Can you rerun the experiments?
+    - Can you reproduce the results in the paper?
+    - Are all the plots in the paper clearly interpretable with well-defined and explained axes, with the methodology clearly explained in the paper text?
+    - Is the English in the paper correct and clear?
+    - Do you have any feedback on any TODOs that the authors have left at this stage? 
+    You should format the response as follows: 
+    For each question, list the question in bold. Then, write a well written paragraph answering the question. 
+    Leave a one line gap between the answer and the next question.
+    `
   };
 
   const generatePeerReview = async () => {
